@@ -14,9 +14,10 @@ app.get('/lions', function(req, res){
   res.json(lions);
 });
 
-app.delete('/lion/:id', function(req, res){
+app.delete('/lions/:id', function(req, res){
+    var lion = lions[_.findIndex(lions, {id: req.params.id})];
     _.remove(lions, {id:req.params.id});
-    res.send();
+    res.send(lion);
 });
 
 app.get('/lions/:id', function(req, res){
